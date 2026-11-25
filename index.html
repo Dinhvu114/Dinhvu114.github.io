@@ -66,6 +66,13 @@ p{margin:0}
 .seal text{font-size:9.8px;letter-spacing:1.6px;fill:var(--ink);font-family:var(--f-body);text-transform:lowercase}
 @media (prefers-reduced-motion:no-preference){.seal svg{animation:spin 26s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
 
+/* photos: black and white like the reference, colour on hover */
+.ph{position:relative;background:#2a2a28;overflow:hidden;margin:0}
+.ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transition:filter .6s ease}
+.ph:hover img{filter:none}
+.ph.keep-color img{filter:contrast(1.04) saturate(1.05)}
+.ph figcaption{position:absolute;left:10px;bottom:8px;font-size:11px;color:#fff;letter-spacing:.04em;opacity:.85}
+
 .lang{display:inline-flex;gap:2px;font-size:12px;letter-spacing:.08em}
 .lang button{font:inherit;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -83,7 +90,9 @@ ul.pts li{position:relative;padding-left:22px;font-size:17px;line-height:1.55}
 ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--red)}
 
 /* 1. cover */
-.cover{grid-template-columns:minmax(0,1fr) auto;min-height:640px}
+.cover{grid-template-columns:minmax(0,1fr) minmax(0,.58fr) auto;min-height:660px}
+.cover-photo{align-self:stretch;min-height:520px}
+.cover-photo img{object-position:51% 50%}
 .cover-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-width:0}
 .cover-name{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .cover-name h1{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(60px,9.4vw,128px);letter-spacing:-.05em;line-height:.86;margin:0;text-transform:lowercase}
@@ -94,6 +103,9 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
 .about-title{display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--rule);padding-left:18px}
 .about-text{display:flex;flex-direction:column;gap:22px;min-width:0}
 .about-side{display:flex;flex-direction:column;gap:22px;min-width:0}
+.about-photo{position:relative}
+.about-photo .ph{aspect-ratio:3/4}
+.about-photo .seal{position:absolute;left:-54px;top:-44px}
 .facts{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
 .facts div{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid var(--rule)}
 .facts strong{font-size:17px;font-weight:600}
@@ -116,7 +128,9 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
 .semd .r{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding-left:32px;border-left:1px solid var(--rule)}
 
 /* role */
-.concept{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;min-height:480px}
+.concept{grid-template-columns:minmax(0,.62fr) minmax(0,1.1fr) minmax(0,1fr) auto;min-height:500px}
+.concept .ph{aspect-ratio:3/4;align-self:center}
+.concept .ph img{object-position:49% 56%}
 .concept .c2{display:flex;flex-direction:column;gap:26px}
 .concept .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .concept .c3{display:flex;flex-direction:column;gap:18px;justify-content:flex-end}
@@ -163,6 +177,7 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
 /* thank you */
 .thanks{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);min-height:520px}
 .thanks .l{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.thanks .ph{aspect-ratio:16/9}
 .thanks .r{display:flex;align-items:center;gap:18px;justify-content:center;flex-wrap:wrap}
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);
@@ -185,6 +200,9 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
   .sm li:nth-child(odd){border-right:0;padding-right:0}
   .sm li:nth-child(even){padding-left:0}
   .progress ul.pts{columns:1}
+  .cover-photo{min-height:0;aspect-ratio:4/5}
+  .about-photo .seal{left:auto;right:-14px;top:-40px}
+  .concept .ph{aspect-ratio:16/10}
 }
 </style>
 </head>
@@ -213,6 +231,7 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
       <p class="lede" data-vi="Kỹ sư phần mềm ở Hà Nội. Tôi xây dựng dịch vụ backend và giao diện chạy trên chúng, bằng Java, C# và TypeScript.">Software engineer in Hanoi. I build backend services and the screens on top of them, in Java, C# and TypeScript.</p>
       <div class="meta mute" data-vi="Backend · Fullstack · Đồ án SEMD">Backend · Fullstack · SEMD thesis</div>
     </div>
+    <figure class="ph cover-photo"><img src="img/hue.jpg" alt="Photo by Nguyen Dinh Vu: a person in an áo nhật bình walking through the Imperial City, Huế" width="1182" height="665"></figure>
     <h2 class="big vert cover-word" data-vi="hồ sơ">portfolio</h2>
   </section>
 
@@ -233,15 +252,18 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
       </div>
     </div>
     <div class="about-side">
-      <div class="seal" aria-hidden="true">
-        <svg viewBox="0 0 124 124"><defs><path id="c0" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
-          <text><textPath href="#c0">about me · nguyen dinh vu · hanoi · 2026 ·</textPath></text></svg>
-        <span class="dot"></span>
-      </div>
-      <div class="facts">
-        <div><span class="label" data-vi="Đang làm">Working at</span><strong>Swantech · LunaWork</strong></div>
-        <div><span class="label" data-vi="Đang học">Studying</span><strong data-vi="Đại học CMC">CMC University</strong></div>
-        <div><span class="label" data-vi="Sống tại">Based in</span><strong data-vi="Hà Nội, Việt Nam">Hanoi, Vietnam</strong></div>
+      <div class="about-photo">
+        <figure class="ph keep-color"><img src="img/roses.jpg" alt="Photo by Nguyen Dinh Vu: a bouquet of red roses in newspaper wrapping" width="768" height="1024"></figure>
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 124 124"><defs><path id="c0" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+            <text><textPath href="#c0">about me · nguyen dinh vu · hanoi · 2026 ·</textPath></text></svg>
+          <span class="dot"></span>
+        </div>
+        <div class="facts">
+          <div><span class="label" data-vi="Đang làm">Working at</span><strong>Swantech · LunaWork</strong></div>
+          <div><span class="label" data-vi="Đang học">Studying</span><strong data-vi="Đại học CMC">CMC University</strong></div>
+          <div><span class="label" data-vi="Sống tại">Based in</span><strong data-vi="Hà Nội, Việt Nam">Hanoi, Vietnam</strong></div>
+        </div>
       </div>
     </div>
     <div class="vline">
@@ -323,6 +345,7 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
 
   <!-- 7. my role -->
   <section class="sheet concept" aria-label="My role in SEMD">
+    <figure class="ph"><img src="img/boat.jpg" alt="Photo by Nguyen Dinh Vu: a boat crossing open sea seen from a hillside" width="1182" height="665"></figure>
     <div class="c2">
       <div class="row">
         <div class="seal" aria-hidden="true">
@@ -420,6 +443,7 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
   <section class="sheet thanks" aria-label="Thank you">
     <div class="l">
       <div class="topbar" style="justify-content:flex-start;gap:48px"><span class="meta">Nguyen Dinh Vu<br>2026</span><span class="meta">dinhvu114.github.io</span></div>
+      <figure class="ph"><img src="img/sunset.jpg" alt="Photo by Nguyen Dinh Vu: a silhouette on the beach at sunset" width="1182" height="665"></figure>
       <p class="lede" data-vi="Cảm ơn bạn đã xem. Tôi đang tìm cơ hội backend và fullstack. Email là cách liên hệ nhanh nhất.">Thanks for looking. I'm open to backend and fullstack roles. Email is the fastest way to reach me.</p>
       <div class="contact">
         <button class="chip" type="button" id="copy-email-2" data-copy="nguyendinhvu112005@gmail.com" aria-label="Email" title="Email"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 6.5h17v11h-17z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m3.5 7 8.5 6.5L20.5 7"/></svg>nguyendinhvu112005@gmail.com</button>
