@@ -8,20 +8,19 @@
 <meta property="og:title" content="Nguyen Dinh Vu · Portfolio">
 <meta property="og:description" content="Software engineer in Hanoi. Java, C#, TypeScript. SEMD emergency dispatch thesis project.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/osrm.jpg">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E7E4DC'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23E2311D'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap">
 <style>
-/* Layout: a deck of paper "sheets" on a grey table, each sheet one editorial spread (cover, about, numbered projects, thank you) */
+/* Layout: a deck of paper "sheets" on a grey table; type does the work, red seals and big numbers are the only ornament */
 :root{
   --table:#A19F9A;
   --paper:#E7E4DC;
   --ink:#1A1A18;
   --mute:#6C6860;
-  --rule:rgba(26,26,24,.32);
+  --rule:rgba(26,26,24,.3);
   --red:#E2311D;
   --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -29,203 +28,163 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--table);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;font-stretch:100%;
+body{margin:0;background:var(--table);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
 img{max-width:100%;display:block}
 [hidden]{display:none!important}
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+p{margin:0}
 
 .deck{max-width:1180px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:28px}
 .sheet{position:relative;background:var(--paper);box-shadow:0 1px 0 rgba(0,0,0,.08),0 18px 40px -18px rgba(0,0,0,.45);
-  padding:clamp(20px,3.4vw,44px);min-height:min(640px,auto);display:grid;gap:24px;overflow:hidden}
+  padding:clamp(22px,3.8vw,52px);display:grid;gap:28px 40px;overflow:hidden}
 
-/* type */
+/* type scale */
 .big{font-family:var(--f-display);font-weight:800;font-stretch:112%;color:var(--red);text-transform:lowercase;
   letter-spacing:-.045em;line-height:.86;margin:0;text-wrap:balance}
-.big.xl{font-size:clamp(64px,10vw,140px)}
-.big.l{font-size:clamp(48px,7vw,96px)}
-.big.m{font-size:clamp(40px,5.2vw,72px)}
-.num{font-family:var(--f-display);font-weight:800;font-stretch:112%;color:var(--red);font-size:clamp(64px,9vw,124px);line-height:.8;letter-spacing:-.04em}
+.big.xxl{font-size:clamp(88px,15vw,210px)}
+.big.xl{font-size:clamp(68px,10.5vw,150px)}
+.big.l{font-size:clamp(54px,7.6vw,106px)}
+.big.m{font-size:clamp(46px,6vw,84px)}
+.num{font-family:var(--f-display);font-weight:800;font-stretch:112%;color:var(--red);font-size:clamp(72px,10vw,140px);line-height:.8;letter-spacing:-.04em}
 .vert{writing-mode:vertical-rl;text-orientation:mixed}
-.meta{font-size:11px;line-height:1.35;color:var(--ink);letter-spacing:.01em}
+.meta{font-size:12.5px;line-height:1.4;color:var(--ink)}
 .meta.mute{color:var(--mute)}
-.small{font-size:13px;line-height:1.6;color:#3A3833}
-.lede{font-size:clamp(16px,1.6vw,19px);line-height:1.5;max-width:46ch;margin:0}
-.label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
-p{margin:0}
+.lede{font-size:clamp(20px,2.1vw,26px);line-height:1.42;max-width:34ch;letter-spacing:-.01em}
+.body{font-size:17px;line-height:1.65;color:#33312C;max-width:52ch}
+.label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--mute)}
+.role{font-size:19px;font-weight:600;letter-spacing:-.01em}
 
-/* sheet furniture */
 .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
-.rule-v{border-left:1px solid var(--rule)}
-.rule-h{border-top:1px solid var(--rule)}
+.vline{border-left:1px solid var(--rule);padding-left:14px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
 
 /* red dot with circling words */
-.seal{position:relative;width:118px;height:118px;flex:none}
-.seal .dot{position:absolute;inset:31px;border-radius:50%;background:var(--red)}
+.seal{position:relative;width:124px;height:124px;flex:none}
+.seal .dot{position:absolute;inset:33px;border-radius:50%;background:var(--red)}
 .seal svg{position:absolute;inset:0;width:100%;height:100%}
-.seal text{font-size:9.6px;letter-spacing:1.6px;fill:var(--ink);font-family:var(--f-body);text-transform:lowercase}
+.seal text{font-size:9.8px;letter-spacing:1.6px;fill:var(--ink);font-family:var(--f-body);text-transform:lowercase}
 @media (prefers-reduced-motion:no-preference){.seal svg{animation:spin 26s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}}
 
-.ph{background:#2a2a28}
-.ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
-
-/* language switch */
-.lang{display:inline-flex;gap:2px;font-size:11px;letter-spacing:.08em}
-.lang button{font:inherit;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:4px 9px;cursor:pointer}
+.lang{display:inline-flex;gap:2px;font-size:12px;letter-spacing:.08em}
+.lang button{font:inherit;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:5px 10px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
-/* contact chips */
 .contact{display:flex;flex-wrap:wrap;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--ink);background:transparent;color:var(--ink);
-  font:inherit;font-size:13px;text-decoration:none;cursor:pointer;border-radius:0}
+.chip{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid var(--ink);background:transparent;color:var(--ink);
+  font:inherit;font-size:15px;line-height:1.2;text-decoration:none;cursor:pointer;border-radius:0}
 .chip:hover{background:var(--ink);color:var(--paper)}
-.chip .ic{width:15px;height:15px;flex:none}
+.chip .ic{width:16px;height:16px;flex:none}
 
-/* ---------- 1. cover ---------- */
-.cover{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) auto;grid-template-rows:auto 1fr auto;min-height:620px}
-.cover .topbar{grid-column:1/3}
-.cover-left{grid-column:1;grid-row:2;display:flex;flex-direction:column;justify-content:center;gap:22px;min-width:0}
-.cover-left .ph{width:190px;aspect-ratio:1/1}
-.cover-name{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em;line-height:.95;margin:0}
-.cover-mid{grid-column:2;grid-row:2/4;position:relative;align-self:stretch;min-width:0}
-.cover-mid .ph{height:100%;min-height:420px}
-.cover-mid .seal{position:absolute;left:-64px;top:-36px}
-.cover-word{grid-column:3;grid-row:1/4;align-self:center;font-size:clamp(90px,11.5vw,150px);margin-right:-6px}
-.cover-foot{grid-column:1;grid-row:3;align-self:end}
-
-/* ---------- 2. about ---------- */
-.about{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) minmax(0,.7fr) auto;align-items:start}
-.about-title{grid-column:1;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch;padding-left:18px;min-height:520px}
-.about-text{grid-column:2;display:flex;flex-direction:column;gap:16px;min-width:0}
-.about-side{grid-column:3;display:flex;flex-direction:column;gap:18px;min-width:0}
-.about-side .ph{aspect-ratio:4/3.4;position:relative;overflow:visible}
-.about-side .seal{position:absolute;right:-40px;top:-46px}
-.about .vline{grid-column:4;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding-left:14px}
-.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule)}
-.fig{padding:12px 10px 12px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:2px}
-.fig:nth-child(odd){border-right:1px solid var(--rule)}
-.fig:nth-child(even){padding-left:12px}
-.fig b{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:30px;line-height:1;color:var(--red);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.fig span{font-size:12px;color:var(--mute);line-height:1.35}
-
-/* ---------- projects (experience + semd) ---------- */
-.proj{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:440px}
-.proj .head{display:flex;flex-direction:column;gap:14px}
-.proj .role{font-size:15px;font-weight:600;margin-top:4px}
-.proj .when{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
 .stack{display:flex;flex-wrap:wrap;gap:6px}
-.stack span{font-size:11.5px;padding:3px 8px;border:1px solid var(--rule)}
-ul.pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;max-width:60ch}
-ul.pts li{position:relative;padding-left:18px;font-size:14px;line-height:1.55}
-ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--red)}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.stack span{font-size:13px;padding:4px 9px;border:1px solid var(--rule)}
+ul.pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;max-width:58ch}
+ul.pts li{position:relative;padding-left:22px;font-size:17px;line-height:1.55}
+ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--red)}
 
-/* layout A: title left, number top right */
-.proj.a .head{grid-column:1;align-self:end}
-.proj.a .side{grid-column:2;display:flex;flex-direction:column;gap:18px;padding-left:24px;border-left:1px solid var(--rule)}
+/* 1. cover */
+.cover{grid-template-columns:minmax(0,1fr) auto;min-height:640px}
+.cover-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-width:0}
+.cover-name{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.cover-name h1{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(60px,9.4vw,128px);letter-spacing:-.05em;line-height:.86;margin:0;text-transform:lowercase}
+.cover-word{font-size:clamp(100px,13vw,176px);align-self:center;margin-right:-8px}
+
+/* 2. about */
+.about{grid-template-columns:minmax(300px,1fr) minmax(0,1.25fr) minmax(0,.75fr) auto;min-height:560px}
+.about-title{display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid var(--rule);padding-left:18px}
+.about-text{display:flex;flex-direction:column;gap:22px;min-width:0}
+.about-side{display:flex;flex-direction:column;gap:22px;min-width:0}
+.facts{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.facts div{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.facts strong{font-size:17px;font-weight:600}
+
+/* projects */
+.proj{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:460px}
+.proj .head{display:flex;flex-direction:column;gap:16px;min-width:0}
+.proj.a .head{align-self:end}
+.proj.a .side{display:flex;flex-direction:column;gap:22px;padding-left:32px;border-left:1px solid var(--rule)}
 .proj.a .num{align-self:flex-end}
-/* layout B: title top left, number bottom right */
 .proj.b .head{grid-column:1/3}
-.proj.b .body{grid-column:1;display:flex;flex-direction:column;gap:16px}
+.proj.b .detail{grid-column:1;display:flex;flex-direction:column;gap:20px}
 .proj.b .num{grid-column:2;align-self:end;justify-self:end}
-/* layout C: number bottom left, title top right */
-.proj.c .left{grid-column:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
-.proj.c .right{grid-column:2;display:flex;flex-direction:column;gap:16px}
+.proj.c .left{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.proj.c .right{display:flex;flex-direction:column;gap:18px}
 
-/* semd cover */
-.semd{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);min-height:560px}
-.semd .wide{grid-column:1;position:relative}
-.semd .wide .ph{aspect-ratio:16/8.4}
-.semd .t{grid-column:2;display:flex;flex-direction:column;gap:18px;justify-content:space-between}
+/* semd */
+.semd{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);min-height:560px}
+.semd .l{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.semd .r{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding-left:32px;border-left:1px solid var(--rule)}
 
-/* concept / role */
-.concept{grid-template-columns:auto minmax(0,1fr) minmax(0,1fr) auto;align-items:start;min-height:500px}
-.concept .ph{width:150px;aspect-ratio:3/4;align-self:center}
-.concept .c2{display:flex;flex-direction:column;gap:18px}
-.concept .c2 .row{display:flex;align-items:center;gap:6px}
-.concept .c3{display:flex;flex-direction:column;gap:14px;padding-top:110px}
-.concept .vline{align-self:stretch;border-left:1px solid var(--rule);padding-left:12px;display:flex;align-items:flex-end}
+/* role */
+.concept{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;min-height:480px}
+.concept .c2{display:flex;flex-direction:column;gap:26px}
+.concept .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.concept .c3{display:flex;flex-direction:column;gap:18px;justify-content:flex-end}
 
 /* lifecycle */
-.goal{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);min-height:520px;padding-bottom:64px}
-.goal .imgs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:end;position:relative}
-.goal .imgs .ph:first-child{aspect-ratio:4/3.4}
-.goal .imgs .ph:last-child{aspect-ratio:5/4}
-.goal .imgs .seal{position:absolute;left:calc(50% - 59px);bottom:-52px}
-.sm{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule)}
-.sm li{display:flex;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule);min-width:0}
-.sm li:nth-child(odd){padding-right:12px;border-right:1px solid var(--rule)}
-.sm li:nth-child(even){padding-left:12px}
-.sm i{font-style:normal;font-size:11px;color:var(--mute);font-variant-numeric:tabular-nums}
-.sm b{font-weight:700;font-size:13px;letter-spacing:.02em;overflow-wrap:anywhere}
+.goal{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:520px}
+.goal .l{display:flex;flex-direction:column;gap:26px}
+.goal .l .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sm{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);align-self:center}
+.sm li{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.sm li:nth-child(odd){padding-right:14px;border-right:1px solid var(--rule)}
+.sm li:nth-child(even){padding-left:16px}
+.sm i{font-style:normal;font-size:12.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+.sm b{font-weight:700;font-size:15.5px;letter-spacing:.02em;overflow-wrap:anywhere}
 .sm li.end b{color:var(--red)}
 
-/* progress */
-.progress{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;min-height:540px}
-.progress .cols{grid-column:1/2;display:flex;flex-direction:column;gap:18px}
-.progress .pics{grid-column:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-self:center}
-.progress .pics .ph{aspect-ratio:3/4}
-.progress .vline{grid-column:3;border-left:1px solid var(--rule);padding-left:12px;display:flex;align-items:flex-end}
+/* what I built */
+.progress{grid-template-columns:minmax(0,1fr) auto;min-height:520px}
+.progress .cols{display:flex;flex-direction:column;gap:30px}
+.progress ul.pts{display:block;columns:2 320px;column-gap:44px;max-width:none}
+.progress ul.pts li{break-inside:avoid;margin-bottom:14px}
 
 /* outcome */
 .outcome{grid-template-columns:auto minmax(0,1fr);min-height:560px}
-.outcome .word{font-size:clamp(70px,8.4vw,118px);align-self:start}
-.outcome .r{display:flex;flex-direction:column;gap:16px;min-width:0}
+.outcome .word{font-size:clamp(76px,9vw,126px);align-self:start}
+.outcome .r{display:flex;flex-direction:column;gap:18px;min-width:0}
 .yt{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#1a1a18;text-decoration:none}
 .yt img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.yt-play{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:var(--red);
+.yt-play{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;border-radius:50%;background:var(--red);
   display:grid;place-items:center;color:var(--paper);transition:transform .2s ease}
-.yt-play svg{width:34px;height:34px;margin-left:5px}
+.yt-play svg{width:36px;height:36px;margin-left:5px}
 .yt:hover .yt-play{transform:scale(1.07)}
-.yt-cta{position:absolute;left:14px;bottom:12px;font-size:12px;color:#fff;letter-spacing:.06em;text-transform:lowercase}
+.yt-cta{position:absolute;left:16px;bottom:14px;font-size:13px;color:#fff;letter-spacing:.06em;text-transform:lowercase}
 
 /* skills */
-.skills{grid-template-columns:minmax(0,.9fr) minmax(0,2fr)}
-.skill-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
-.skill{padding:12px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:4px}
-.skill p{font-size:14px}
-.edu{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.skills{grid-template-columns:minmax(0,.8fr) minmax(0,2fr)}
+.skill-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+.skill{padding:14px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:5px}
+.skill p{font-size:16.5px;line-height:1.5}
+.edu{display:flex;flex-direction:column;gap:6px}
+.edu strong{font-size:19px}
 
 /* thank you */
 .thanks{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);min-height:520px}
-.thanks .l{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
-.thanks .l .ph{width:180px;aspect-ratio:1/1}
+.thanks .l{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
 .thanks .r{display:flex;align-items:center;gap:18px;justify-content:center;flex-wrap:wrap}
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);
-  font-size:13px;padding:8px 14px}
+  font-size:14px;padding:9px 15px}
 
-/* ---------- narrow screens ---------- */
 @media (max-width:860px){
   .deck{gap:16px;padding-block:16px 40px}
-  .sheet{min-height:0}
+  .sheet{min-height:0!important}
   .vert{writing-mode:horizontal-tb}
   .cover,.about,.proj,.semd,.concept,.goal,.progress,.outcome,.skills,.thanks{grid-template-columns:minmax(0,1fr)}
-  .cover{grid-template-rows:none}
-  .cover .topbar,.cover-left,.cover-mid,.cover-word,.cover-foot,
-  .about-title,.about-text,.about-side,.about .vline,
-  .proj.a .head,.proj.a .side,.proj.b .head,.proj.b .body,.proj.b .num,.proj.c .left,.proj.c .right,
-  .semd .wide,.semd .t,.progress .cols,.progress .pics,.progress .vline{grid-column:1;grid-row:auto}
-  .cover-word{order:-1;font-size:clamp(64px,18vw,110px)}
-  .cover-mid .ph{min-height:0;aspect-ratio:1/1}
-  .cover-mid .seal{left:auto;right:-18px;top:-36px}
-  .about-title{min-height:0;padding-left:0}
-  .about .vline,.concept .vline,.progress .vline{display:none}
-  .about-side .seal{right:-12px}
-  .proj.a .side{padding-left:0;border-left:0}
+  .proj.b .head,.proj.b .detail,.proj.b .num{grid-column:1}
+  .cover-word{order:-1;font-size:clamp(60px,17vw,120px);margin-right:0}
+  .about-title{padding-left:0;border-left:0;gap:14px}
+  .vline{display:none}
+  .proj.a .side,.semd .r{padding-left:0;border-left:0}
   .proj.b .num{justify-self:start}
-  .concept .ph{width:100%;aspect-ratio:16/10}
-  .concept .c3{padding-top:0}
-  .outcome .word{font-size:clamp(56px,16vw,96px)}
+  .outcome .word{font-size:clamp(60px,17vw,100px)}
   .skill-list{grid-template-columns:minmax(0,1fr)}
-  .goal .imgs .seal{display:none}
-  .goal{padding-bottom:clamp(20px,3.4vw,44px)}
   .sm{grid-template-columns:minmax(0,1fr)}
   .sm li:nth-child(odd){border-right:0;padding-right:0}
   .sm li:nth-child(even){padding-left:0}
-  .about-title{gap:14px}
+  .progress ul.pts{columns:1}
 }
 </style>
 </head>
@@ -234,40 +193,38 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
 
   <!-- 1. cover -->
   <section class="sheet cover" aria-label="Cover">
-    <div class="topbar">
-      <div class="meta">Nguyen Dinh Vu<br>2026</div>
-      <div class="meta">dinhvu114.github.io</div>
-      <div class="lang" role="group" aria-label="Language / Ngôn ngữ">
-        <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" id="lang-vi" data-lang="vi" aria-pressed="false">VI</button>
+    <div class="cover-main">
+      <div class="topbar">
+        <div class="meta">Nguyen Dinh Vu<br>2026</div>
+        <div class="meta">dinhvu114.github.io</div>
+        <div class="lang" role="group" aria-label="Language / Ngôn ngữ">
+          <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" id="lang-vi" data-lang="vi" aria-pressed="false">VI</button>
+        </div>
       </div>
-    </div>
-    <div class="cover-left">
-      <div class="ph"><img src="img/login.jpg" alt="SEMD sign-in screen" width="700" height="680"></div>
-      <h1 class="cover-name">Nguyen<br>Dinh Vu</h1>
-      <p class="small" style="max-width:34ch" data-vi="Kỹ sư phần mềm ở Hà Nội. Tôi xây dựng dịch vụ backend và giao diện chạy trên chúng, bằng Java, C# và TypeScript.">Software engineer in Hanoi. I build backend services and the screens on top of them, in Java, C# and TypeScript.</p>
-    </div>
-    <div class="cover-mid">
-      <div class="ph"><img src="img/osrm.jpg" alt="SEMD OSRM route simulation dialog" width="900" height="913"></div>
-      <div class="seal" aria-hidden="true">
-        <svg viewBox="0 0 118 118"><defs><path id="c1" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs>
-          <text><textPath href="#c1">software engineer · hanoi · java · c# · typescript ·</textPath></text></svg>
-        <span class="dot"></span>
+      <div class="cover-name">
+        <h1>nguyen<br>dinh vu</h1>
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 124 124"><defs><path id="c1" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+            <text><textPath href="#c1">software engineer · hanoi · java · c# · typescript ·</textPath></text></svg>
+          <span class="dot"></span>
+        </div>
       </div>
+      <p class="lede" data-vi="Kỹ sư phần mềm ở Hà Nội. Tôi xây dựng dịch vụ backend và giao diện chạy trên chúng, bằng Java, C# và TypeScript.">Software engineer in Hanoi. I build backend services and the screens on top of them, in Java, C# and TypeScript.</p>
+      <div class="meta mute" data-vi="Backend · Fullstack · Đồ án SEMD">Backend · Fullstack · SEMD thesis</div>
     </div>
     <h2 class="big vert cover-word" data-vi="hồ sơ">portfolio</h2>
-    <div class="cover-foot meta mute" data-vi="Backend · Fullstack · Đồ án SEMD">Backend · Fullstack · SEMD thesis</div>
   </section>
 
   <!-- 2. about me -->
   <section class="sheet about" id="about" aria-label="About me">
-    <div class="about-title rule-v">
-      <h2 class="big l" data-vi="về<br>tôi">about<br>me</h2>
+    <div class="about-title">
+      <h2 class="big m" data-vi="về<br>tôi">about<br>me</h2>
       <div class="meta mute">Nguyen Dinh Vu<br>2026</div>
     </div>
     <div class="about-text">
-      <p class="lede" data-vi="Tôi là kỹ sư phần mềm, hiện làm việc tại Swantech và LunaWork, song song hoàn thành chương trình Kỹ sư Công nghệ thông tin tại Đại học CMC.">I'm a software engineer working at Swantech and LunaWork while finishing my Bachelor of Engineering in IT at CMC University.</p>
-      <p class="small" data-vi="Tôi thích phần lõi của hệ thống: state machine, xử lý đồng thời, idempotency và CI/CD. Tôi làm việc trên .NET 8 và Angular, Node.js và React, Spring Boot và PostgreSQL.">I like the core of a system: state machines, concurrency, idempotency and CI/CD. I work across .NET 8 and Angular, Node.js and React, Spring Boot and PostgreSQL.</p>
+      <p class="lede" data-vi="Tôi là kỹ sư phần mềm, hiện làm tại Swantech và LunaWork, song song hoàn thành chương trình Kỹ sư Công nghệ thông tin tại Đại học CMC.">I'm a software engineer at Swantech and LunaWork, finishing my Bachelor of Engineering in IT at CMC University.</p>
+      <p class="body" data-vi="Tôi thích phần lõi của hệ thống: state machine, xử lý đồng thời, idempotency và CI/CD. Tôi làm việc trên .NET 8 và Angular, Node.js và React, Spring Boot và PostgreSQL.">I like the core of a system: state machines, concurrency, idempotency and CI/CD. I work across .NET 8 and Angular, Node.js and React, Spring Boot and PostgreSQL.</p>
       <div class="contact">
         <button class="chip" id="copy-email" type="button" data-copy="nguyendinhvu112005@gmail.com" aria-label="Email" title="Email"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 6.5h17v11h-17z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m3.5 7 8.5 6.5L20.5 7"/></svg>nguyendinhvu112005@gmail.com</button>
         <a class="chip" href="https://github.com/Dinhvu114" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>Dinhvu114</a>
@@ -276,22 +233,20 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
       </div>
     </div>
     <div class="about-side">
-      <div class="ph"><img src="img/top3.jpg" alt="SEMD top 3 ambulance suggestions" width="900" height="668">
-        <div class="seal" aria-hidden="true">
-          <svg viewBox="0 0 118 118"><defs><path id="c0" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs>
-            <text><textPath href="#c0">about me · nguyen dinh vu · hanoi · 2026 ·</textPath></text></svg>
-          <span class="dot"></span>
-        </div></div>
-      <div class="figs">
-        <div class="fig"><b>72</b><span data-vi="pull request đã merge tại LunaWork">pull requests merged at LunaWork</span></div>
-        <div class="fig"><b>760+</b><span data-vi="commit qua quy trình PR và CI">commits through PR-based CI</span></div>
-        <div class="fig"><b>100+</b><span data-vi="file test Vitest đang duy trì">Vitest test files maintained</span></div>
-        <div class="fig"><b>8.5</b><span data-vi="/10 đánh giá thực tập, loại A">/10 internship rating, Grade A</span></div>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 124 124"><defs><path id="c0" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+          <text><textPath href="#c0">about me · nguyen dinh vu · hanoi · 2026 ·</textPath></text></svg>
+        <span class="dot"></span>
+      </div>
+      <div class="facts">
+        <div><span class="label" data-vi="Đang làm">Working at</span><strong>Swantech · LunaWork</strong></div>
+        <div><span class="label" data-vi="Đang học">Studying</span><strong data-vi="Đại học CMC">CMC University</strong></div>
+        <div><span class="label" data-vi="Sống tại">Based in</span><strong data-vi="Hà Nội, Việt Nam">Hanoi, Vietnam</strong></div>
       </div>
     </div>
-    <div class="vline rule-v">
+    <div class="vline">
       <span class="meta mute vert">dinhvu114.github.io</span>
-      <span class="meta mute vert" data-vi="Hà Nội, Việt Nam">Hanoi, Vietnam</span>
+      <span class="meta mute vert">2026</span>
     </div>
   </section>
 
@@ -299,7 +254,7 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
   <section class="sheet proj a" aria-label="Swantech">
     <div class="head">
       <div class="meta mute" data-vi="11/2026 – nay · Hà Nội">Nov 2026 – Present · Hanoi</div>
-      <h2 class="big m">swantech</h2>
+      <h2 class="big l">swantech</h2>
       <div class="role" data-vi="Kỹ sư phần mềm">Software Engineer</div>
       <div class="stack"><span>.NET 8</span><span>Clean Architecture</span><span>Microservices</span><span>C#</span><span>Angular 18</span><span>TypeScript</span><span>SQL</span><span>Keycloak</span><span>Docker</span></div>
     </div>
@@ -307,10 +262,9 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
       <span class="num">1.</span>
       <ul class="pts">
         <li data-vi="Xây dựng trọn vẹn tính năng danh mục nhóm kỹ năng nhân sự (HR), từ service .NET 8 đến màn hình Angular 18.">Built an HR skill-group catalog feature end-to-end, from .NET 8 services to Angular 18 screens.</li>
-        <li data-vi="Thêm bố cục cột lưới tùy chỉnh cho 6 trang danh sách tài sản, kèm một SQL migration mới.">Added configurable grid column layouts to 6 asset list pages, backed by a new SQL migration.</li>
+        <li data-vi="Thêm bố cục cột lưới tùy chỉnh cho các trang danh sách tài sản, kèm một SQL migration mới.">Added configurable grid column layouts to the asset list pages, backed by a new SQL migration.</li>
         <li data-vi="Thêm trình soạn thảo văn bản Quill và tự động lưu cho biên bản họp trong module Booking.">Added a Quill rich-text editor and auto-save to the Booking module's meeting minutes.</li>
       </ul>
-      <div class="foot"><span class="meta mute" data-vi="kinh nghiệm">experience</span><span class="meta mute">01 / 04</span></div>
     </div>
   </section>
 
@@ -318,15 +272,15 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
   <section class="sheet proj b" aria-label="LunaWork">
     <div class="head">
       <div class="meta mute" data-vi="11/2026 – nay · Hà Nội · Bán thời gian">Nov 2026 – Present · Hanoi · Part-time</div>
-      <h2 class="big m">lunawork</h2>
+      <h2 class="big l">lunawork</h2>
       <div class="role" data-vi="Kỹ sư phần mềm (Bán thời gian)">Software Engineer (Part-time)</div>
     </div>
-    <div class="body">
+    <div class="detail">
       <div class="stack"><span>TypeScript</span><span>Node.js (Express)</span><span>React 18</span><span>PostgreSQL</span><span>Vitest</span><span>Playwright</span><span>Docker</span><span>GitHub Actions</span></div>
       <ul class="pts">
         <li data-vi="Xây dựng các tính năng Contract AI: vòng lặp redline bằng AI, rà soát rủi ro theo playbook, tóm tắt, trích xuất dữ liệu và mẫu hợp đồng.">Built Contract AI features: AI redline loop, playbook risk review, summary, data extraction and templates.</li>
         <li data-vi="Xây dựng quy trình phê duyệt hàng loạt, có ghi log kiểm toán quyết định của người duyệt trên cả REST API và giao diện React.">Built bulk approval workflows with audit logging of reviewer decisions across the REST API and React UI.</li>
-        <li data-vi="Merge 72 pull request (760+ commit) qua quy trình PR và CI; duy trì test trong hơn 100 file test Vitest.">Merged 72 pull requests (760+ commits) through PR-based CI; maintained tests in 100+ Vitest test files.</li>
+        <li data-vi="Làm việc qua quy trình PR và CI, viết và duy trì test bằng Vitest.">Shipped through a PR-based CI workflow, writing and maintaining Vitest tests.</li>
         <li data-vi="Sửa lỗi đàm phán nhiều vòng ở phần đánh số điều khoản và so sánh phiên bản của đối tác.">Fixed multi-round negotiation bugs in clause numbering and counterparty version comparison.</li>
       </ul>
     </div>
@@ -340,109 +294,96 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
       <span class="num">3.</span>
     </div>
     <div class="right">
-      <h2 class="big m">cmc ts</h2>
+      <h2 class="big l">cmc ts</h2>
       <div class="role" data-vi="Thực tập sinh Fullstack · CMC Technology and Solution, Phòng ITD">Fullstack Developer Intern · CMC Technology and Solution, ITD Department</div>
       <div class="stack"><span>Java 21</span><span>Spring Boot</span><span>PostgreSQL</span><span>GitHub Actions</span></div>
       <ul class="pts">
-        <li data-vi="Phát triển trọn vẹn các RESTful API nội bộ cho doanh nghiệp; được đánh giá 8.5/10 (xếp loại A).">Delivered internal enterprise RESTful APIs end-to-end; rated 8.5/10 (Grade A) in evaluation.</li>
+        <li data-vi="Phát triển trọn vẹn các RESTful API nội bộ cho doanh nghiệp, được xếp loại A khi đánh giá.">Delivered internal enterprise RESTful APIs end-to-end, graded A in evaluation.</li>
         <li data-vi="Xây dựng logic nghiệp vụ backend theo tiêu chuẩn bảo mật dữ liệu doanh nghiệp (phạm vi theo NDA).">Built backend business logic under enterprise data-security standards (scope under NDA).</li>
       </ul>
     </div>
   </section>
 
-  <!-- 6. SEMD cover -->
+  <!-- 6. SEMD -->
   <section class="sheet semd" id="semd" aria-label="SEMD project">
-    <div class="wide">
-      <div class="ph"><img src="img/dispatch.jpg" alt="SEMD dispatcher intake screen" width="1600" height="834"></div>
+    <div class="l">
+      <span class="meta mute" data-vi="Đồ án tốt nghiệp · Dự án nhóm · Bảo vệ 09/2026">Graduation thesis · Team project · Defended Sep 2026</span>
+      <h2 class="big xxl">semd</h2>
+      <span class="meta mute">Java 21 · Spring Boot 3.3 · PostgreSQL 16 / PostGIS · WebSocket · OSRM</span>
     </div>
-    <div class="t">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-        <span class="meta mute" data-vi="Đồ án tốt nghiệp · Dự án nhóm<br>Bảo vệ 09/2026">Graduation thesis · Team project<br>Defended Sep 2026</span>
-        <span class="num">4.</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <h2 class="big l">semd</h2>
-        <p class="lede" data-vi="Hệ thống điều phối cấp cứu y tế thông minh: tiếp nhận cuộc gọi, gợi ý xe gần nhất, điều xe và theo dõi lộ trình theo thời gian thực.">Smart Emergency Medical Dispatch: take the call, suggest the nearest ambulance, dispatch it and follow the route in real time.</p>
-        <div class="contact">
-          <a class="chip" href="https://github.com/Dinhvu114/semd-backend" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>semd-backend</a>
-          <a class="chip" href="#demo" data-vi="Xem demo ↓">Watch demo ↓</a>
-        </div>
+    <div class="r">
+      <span class="num" style="align-self:flex-end">4.</span>
+      <p class="lede" data-vi="Hệ thống điều phối cấp cứu y tế thông minh: tiếp nhận cuộc gọi, gợi ý xe gần nhất, điều xe và theo dõi lộ trình theo thời gian thực.">Smart Emergency Medical Dispatch: take the call, suggest the nearest ambulance, dispatch it and follow the route in real time.</p>
+      <div class="contact">
+        <a class="chip" href="https://github.com/Dinhvu114/semd-backend" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>semd-backend</a>
+        <a class="chip" href="#demo" data-vi="Xem demo ↓">Watch demo ↓</a>
       </div>
     </div>
   </section>
 
-  <!-- 7. concept: my role -->
+  <!-- 7. my role -->
   <section class="sheet concept" aria-label="My role in SEMD">
-    <div class="ph"><img src="img/confirm.jpg" alt="SEMD dispatch confirmation dialog" width="800" height="640"></div>
     <div class="c2">
       <div class="row">
         <div class="seal" aria-hidden="true">
-          <svg viewBox="0 0 118 118"><defs><path id="c2" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs>
+          <svg viewBox="0 0 124 124"><defs><path id="c2" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
             <text><textPath href="#c2">backend engineer · be2 · semd · dispatch core ·</textPath></text></svg>
           <span class="dot"></span>
         </div>
-        <h2 class="big m" data-vi="vai trò">my role</h2>
+        <h2 class="big l" data-vi="vai trò">my role</h2>
       </div>
       <p class="lede" data-vi="Kỹ sư backend (BE2) trong nhóm làm việc theo Scrum, chạy sprint hàng tuần cùng trưởng nhóm và giảng viên hướng dẫn.">Backend engineer (BE2) on a Scrum team, running weekly sprints with the team lead and supervising professor.</p>
     </div>
     <div class="c3">
-      <p class="small" data-vi="Tôi phụ trách lõi điều phối, vòng đời nhiệm vụ, xử lý đồng thời, mô phỏng xe cấp cứu bằng OSRM và CI/CD.">I owned the dispatch core, the mission lifecycle, concurrency handling, the OSRM ambulance simulation and CI/CD.</p>
-      <p class="small" data-vi="Nhánh feature tách từ develop, PR vào develop, merge vào main cuối mỗi sprint. Trước hội đồng, tôi bảo vệ thiết kế đồng thời và idempotency của backend.">Feature branches off develop, PRs into develop, merged to main each sprint. At the defense I presented and defended the backend's concurrency and idempotency design.</p>
+      <p class="body" data-vi="Tôi phụ trách lõi điều phối, vòng đời nhiệm vụ, xử lý đồng thời, mô phỏng xe cấp cứu bằng OSRM và CI/CD.">I owned the dispatch core, the mission lifecycle, concurrency handling, the OSRM ambulance simulation and CI/CD.</p>
+      <p class="body" data-vi="Nhánh feature tách từ develop, PR vào develop, merge vào main cuối mỗi sprint. Trước hội đồng, tôi bảo vệ thiết kế đồng thời và idempotency của backend.">Feature branches off develop, PRs into develop, merged to main each sprint. At the defense I presented and defended the backend's concurrency and idempotency design.</p>
     </div>
-    <div class="vline"><span class="meta mute vert">semd · 2026</span></div>
+    <div class="vline"><span class="meta mute vert">semd · 2026</span><span class="meta mute vert" data-vi="vai trò">role</span></div>
   </section>
 
-  <!-- 8. goal: lifecycle -->
+  <!-- 8. lifecycle -->
   <section class="sheet goal" aria-label="Dispatch mission lifecycle">
-    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
-      <h2 class="big m" data-vi="vòng đời">lifecycle</h2>
-      <div class="imgs">
-        <div class="ph"><img src="img/top3.jpg" alt="Top 3 nearest ambulances dialog" width="900" height="668"></div>
-        <div class="ph"><img src="img/osrm.jpg" alt="OSRM simulation in ACCEPTED state" width="900" height="913"></div>
+    <div class="l">
+      <div class="row">
+        <h2 class="big l" data-vi="vòng đời">lifecycle</h2>
         <div class="seal" aria-hidden="true">
-          <svg viewBox="0 0 118 118"><defs><path id="c3" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs>
+          <svg viewBox="0 0 124 124"><defs><path id="c3" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
             <text><textPath href="#c3">created → dispatched → accepted → completed ·</textPath></text></svg>
           <span class="dot"></span>
         </div>
       </div>
+      <p class="body" data-vi="Tôi thiết kế state machine cho nhiệm vụ điều phối: 8 trạng thái, mỗi bước chuyển được kiểm tra ở backend và đẩy realtime tới điều phối viên và tài xế.">I designed the dispatch mission state machine: 8 states, every transition checked on the backend and pushed in real time to dispatchers and drivers.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px;justify-content:center;min-width:0">
-      <p class="small" data-vi="Tôi thiết kế state machine cho nhiệm vụ điều phối: 8 trạng thái, mỗi bước chuyển được kiểm tra ở backend và đẩy realtime tới điều phối viên và tài xế.">I designed the dispatch mission state machine: 8 states, every transition checked on the backend and pushed in real time to dispatchers and drivers.</p>
-      <ol class="sm" aria-label="Dispatch mission states">
-        <li><i>01</i><b>CREATED</b></li><li><i>02</i><b>DISPATCHED</b></li>
-        <li><i>03</i><b>ACCEPTED</b></li><li><i>04</i><b>EN_ROUTE</b></li>
-        <li><i>05</i><b>ARRIVED_SCENE</b></li><li><i>06</i><b>TRANSPORTING</b></li>
-        <li><i>07</i><b>ARRIVED_HOSPITAL</b></li><li class="end"><i>08</i><b>COMPLETED</b></li>
-      </ol>
-    </div>
+    <ol class="sm" aria-label="Dispatch mission states">
+      <li><i>01</i><b>CREATED</b></li><li><i>02</i><b>DISPATCHED</b></li>
+      <li><i>03</i><b>ACCEPTED</b></li><li><i>04</i><b>EN_ROUTE</b></li>
+      <li><i>05</i><b>ARRIVED_SCENE</b></li><li><i>06</i><b>TRANSPORTING</b></li>
+      <li><i>07</i><b>ARRIVED_HOSPITAL</b></li><li class="end"><i>08</i><b>COMPLETED</b></li>
+    </ol>
   </section>
 
-  <!-- 9. progress: what I built -->
+  <!-- 9. what I built -->
   <section class="sheet progress" aria-label="What I built">
     <div class="cols">
-      <h2 class="big m" data-vi="phần tôi làm">what i built</h2>
+      <h2 class="big l" data-vi="phần tôi làm">what i built</h2>
       <ul class="pts">
         <li data-vi="Khởi tạo dự án Spring Boot 3.3; thiết lập Flyway migration và lưu trữ file trên MinIO.">Initialized the Spring Boot 3.3 project; set up Flyway migrations and MinIO file storage.</li>
-        <li data-vi="Bộ API nhiệm vụ điều phối (khoảng 9 endpoint) và xác thực tài xế qua UserPrincipal của Spring Security.">Dispatch mission API suite (~9 endpoints) and driver authentication through Spring Security's UserPrincipal.</li>
+        <li data-vi="Bộ API nhiệm vụ điều phối và xác thực tài xế qua UserPrincipal của Spring Security.">Dispatch mission API suite and driver authentication through Spring Security's UserPrincipal.</li>
         <li data-vi="Thông báo thời gian thực qua WebSocket (STOMP) cho điều phối viên và tài xế.">Real-time WebSocket (STOMP) notifications for dispatchers and drivers.</li>
         <li data-vi="Xử lý đồng thời và idempotency để một nhiệm vụ không bị điều phối hay cập nhật trùng.">Concurrency and idempotency handling so a mission is never dispatched or updated twice.</li>
         <li data-vi="Mô phỏng xe cấp cứu chạy theo lộ trình OSRM, kèm đồng bộ checkpoint.">Ambulance simulation along OSRM-calculated routes, with checkpoint sync.</li>
-        <li data-vi="CI/CD với Dockerfile multi-stage và GitHub Actions; triển khai PostgreSQL, Redis và Spring Boot lên Railway; viết chương báo cáo về hạ tầng CI/CD.">CI/CD with multi-stage Dockerfiles and GitHub Actions; deployed PostgreSQL, Redis and Spring Boot to Railway; wrote the thesis chapter on it.</li>
+        <li data-vi="CI/CD với Dockerfile multi-stage và GitHub Actions; triển khai lên Railway; viết chương báo cáo về hạ tầng CI/CD.">CI/CD with multi-stage Dockerfiles and GitHub Actions, deployed to Railway; wrote the thesis chapter on it.</li>
       </ul>
-    </div>
-    <div class="pics">
-      <div class="ph"><img src="img/login.jpg" alt="Provider sign-in" width="700" height="680"></div>
-      <div class="ph"><img src="img/finance.jpg" alt="Revenue reconciliation screen" width="1400" height="865"></div>
     </div>
     <div class="vline"><span class="meta mute vert">Java 21 · Spring Boot 3.3 · PostgreSQL 16 / PostGIS · Redis · MinIO · OSRM</span></div>
   </section>
 
-  <!-- 10. outcome: demo -->
+  <!-- 10. outcome -->
   <section class="sheet outcome" id="demo" aria-label="Live demo">
     <h2 class="big vert word" data-vi="kết quả">outcome</h2>
     <div class="r">
       <div class="topbar">
-        <span class="meta mute" data-vi="Demo trực tiếp · 1:13 · 10 bước, từ tiếp nhận đến đối soát doanh thu">Live demo · 1:13 · 10 steps, from intake to revenue reconciliation</span>
+        <span class="meta mute" data-vi="Demo trực tiếp · 1:13 · từ tiếp nhận đến đối soát doanh thu">Live demo · 1:13 · from intake to revenue reconciliation</span>
         <span class="meta mute">youtu.be/h-FgXLegwfc</span>
       </div>
       <a class="yt" id="semd-video" href="https://youtu.be/h-FgXLegwfc" target="_blank" rel="noopener" data-yt="h-FgXLegwfc" aria-label="Play the SEMD demo">
@@ -456,13 +397,13 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
 
   <!-- 11. skills + education -->
   <section class="sheet skills" aria-label="Skills and education">
-    <div style="display:flex;flex-direction:column;justify-content:space-between;gap:24px">
-      <h2 class="big m" data-vi="kỹ năng">toolbox</h2>
+    <div style="display:flex;flex-direction:column;justify-content:space-between;gap:28px">
+      <h2 class="big l" data-vi="kỹ năng">toolbox</h2>
       <div class="edu">
         <span class="label" data-vi="Học vấn">Education</span>
         <strong data-vi="Đại học CMC">CMC University</strong>
-        <span class="small" data-vi="Kỹ sư Công nghệ thông tin · 09/2023 – nay">Bachelor of Engineering in IT · Sep 2023 – Present</span>
-        <span class="small" data-vi="Chứng chỉ tiếng Anh VSTEP Bậc 4 (tương đương B2)">VSTEP English Level 4 (CEFR B2)</span>
+        <span class="body" data-vi="Kỹ sư Công nghệ thông tin · 09/2023 – nay">Bachelor of Engineering in IT · Sep 2023 – Present</span>
+        <span class="body" data-vi="Chứng chỉ tiếng Anh VSTEP Bậc 4 (tương đương B2)">VSTEP English Level 4 (CEFR B2)</span>
       </div>
     </div>
     <div class="skill-list">
@@ -479,18 +420,17 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height
   <section class="sheet thanks" aria-label="Thank you">
     <div class="l">
       <div class="topbar" style="justify-content:flex-start;gap:48px"><span class="meta">Nguyen Dinh Vu<br>2026</span><span class="meta">dinhvu114.github.io</span></div>
-      <div class="ph"><img src="img/confirm.jpg" alt="SEMD dispatch confirmation dialog" width="800" height="640"></div>
-      <p class="small" style="max-width:40ch" data-vi="Cảm ơn bạn đã xem. Tôi đang tìm cơ hội backend và fullstack. Email là cách liên hệ nhanh nhất.">Thanks for looking. I'm open to backend and fullstack roles. Email is the fastest way to reach me.</p>
+      <p class="lede" data-vi="Cảm ơn bạn đã xem. Tôi đang tìm cơ hội backend và fullstack. Email là cách liên hệ nhanh nhất.">Thanks for looking. I'm open to backend and fullstack roles. Email is the fastest way to reach me.</p>
       <div class="contact">
-        <button class="chip" type="button" id="copy-email-2" data-copy="nguyendinhvu112005@gmail.com" aria-label="Email" title="Email">nguyendinhvu112005@gmail.com</button>
-        <a class="chip" href="https://www.linkedin.com/in/ndvudotcom/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="chip" href="https://github.com/Dinhvu114" target="_blank" rel="noopener">GitHub ↗</a>
+        <button class="chip" type="button" id="copy-email-2" data-copy="nguyendinhvu112005@gmail.com" aria-label="Email" title="Email"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 6.5h17v11h-17z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="m3.5 7 8.5 6.5L20.5 7"/></svg>nguyendinhvu112005@gmail.com</button>
+        <a class="chip" href="https://www.linkedin.com/in/ndvudotcom/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13M7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0"/></svg>LinkedIn</a>
+        <a class="chip" href="https://github.com/Dinhvu114" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>GitHub</a>
       </div>
     </div>
     <div class="r">
       <h2 class="big xl" data-vi="cảm<br>ơn.">thank<br>you.</h2>
       <div class="seal" aria-hidden="true">
-        <svg viewBox="0 0 118 118"><defs><path id="c4" d="M59,59 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs>
+        <svg viewBox="0 0 124 124"><defs><path id="c4" d="M62,62 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
           <text><textPath href="#c4">open to backend &amp; fullstack roles · 2026 ·</textPath></text></svg>
         <span class="dot"></span>
       </div>
