@@ -90,9 +90,7 @@ ul.pts li{position:relative;padding-left:22px;font-size:17px;line-height:1.55}
 ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--red)}
 
 /* 1. cover */
-.cover{grid-template-columns:minmax(0,1fr) minmax(0,.58fr) auto;min-height:660px}
-.cover-photo{align-self:stretch;min-height:520px}
-.cover-photo img{object-position:51% 50%}
+.cover{grid-template-columns:minmax(0,1fr) auto;min-height:640px}
 .cover-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-width:0}
 .cover-name{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .cover-name h1{font-family:var(--f-display);font-weight:800;font-stretch:112%;font-size:clamp(60px,9.4vw,128px);letter-spacing:-.05em;line-height:.86;margin:0;text-transform:lowercase}
@@ -200,7 +198,6 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
   .sm li:nth-child(odd){border-right:0;padding-right:0}
   .sm li:nth-child(even){padding-left:0}
   .progress ul.pts{columns:1}
-  .cover-photo{min-height:0;aspect-ratio:4/5}
   .about-photo .seal{left:auto;right:-14px;top:-40px}
   .concept .ph{aspect-ratio:16/10}
 }
@@ -231,7 +228,6 @@ ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:
       <p class="lede" data-vi="Kỹ sư phần mềm ở Hà Nội. Tôi xây dựng dịch vụ backend và giao diện chạy trên chúng, bằng Java, C# và TypeScript.">Software engineer in Hanoi. I build backend services and the screens on top of them, in Java, C# and TypeScript.</p>
       <div class="meta mute" data-vi="Backend · Fullstack · Đồ án SEMD">Backend · Fullstack · SEMD thesis</div>
     </div>
-    <figure class="ph cover-photo"><img src="img/hue.jpg" alt="Photo by Nguyen Dinh Vu: a person in an áo nhật bình walking through the Imperial City, Huế" width="1182" height="665"></figure>
     <h2 class="big vert cover-word" data-vi="hồ sơ">portfolio</h2>
   </section>
 
