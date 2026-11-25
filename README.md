@@ -1,13 +1,13 @@
 # Nguyen Dinh Vu · Portfolio
 
-Static personal portfolio (English / Vietnamese), one `index.html` plus the SEMD demo poster.
+Static personal portfolio (English / Vietnamese): one `index.html` and black-and-white SEMD screenshots in `img/`.
 The SEMD demo plays inline from YouTube when the poster is clicked.
 
 ## Đưa lên GitHub Pages
 
 1. Tạo repo **public** trên GitHub tên đúng là `Dinhvu114.github.io`.
-2. Đưa 3 file trong thư mục này (`index.html`, `semd-poster.jpg`, `README.md`) vào repo:
-   - Cách nhanh: trong repo vừa tạo, bấm **Add file → Upload files**, kéo 3 file vào, bấm **Commit changes**.
+2. Đưa toàn bộ thư mục này (`index.html`, `img/`, `README.md`) vào repo:
+   - Cách nhanh: trong repo vừa tạo, bấm **Add file → Upload files**, kéo các file vào, bấm **Commit changes**.
    - Hoặc bằng git:
      ```bash
      git init
